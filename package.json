@@ -1,0 +1,27 @@
+{
+  "name": "mydealz-api",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "description": "MyDealz API (inofficial)",
+  "author": "TalkLounge <talklounge@yahoo.de> (https://github.com/TalkLounge)",
+  "repository": "github:TalkLounge/mydealz-api",
+  "homepage": "https://github.com/TalkLounge/mydealz-api#readme",
+  "bugs": "https://github.com/TalkLounge/mydealz-api/issues",
+  "license": "MIT",
+  "dependencies": {
+    "socks-proxy-agent": "^8.0.4",
+    "axios": "^1.7.7",
+    "cheerio": "^1.0.0"
+  },
+  "keywords": [
+    "mydealz",
+    "mydealz.de",
+    "api",
+    "scraper",
+    "webscraper",
+    "extract",
+    "extractor",
+    "deals",
+    "module"
+  ]
+}
