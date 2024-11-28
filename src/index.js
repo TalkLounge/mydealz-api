@@ -12,7 +12,12 @@ export async function getNewDeals(page, options) {
         method: "GET",
         url: `https://www.mydealz.de/new?page=${page}&ajax=true&layout=text`,
         headers: {
-            "User-Agent": false // Disable Axios Default User Agent
+            "Host": "www.mydealz.de",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "de,en;q=0.5",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Connection": "keep-alive"
         }
     }
 
@@ -169,7 +174,7 @@ export async function getNewDeals(page, options) {
         });
     });
 
-    list.sort((a, b) => b.id - a.id);
+    list.sort((a, b) => b.publishedAt - a.publishedAt);
 
     return list;
 }
