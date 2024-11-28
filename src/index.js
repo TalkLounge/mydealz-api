@@ -1,4 +1,3 @@
-const SocksProxyAgent = require("socks-proxy-agent");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
@@ -35,6 +34,8 @@ export async function getNewDeals(page, options) {
                 }
             };
         } else if (url.protocol.startsWith("socks")) {
+            const { SocksProxyAgent } = await import("socks-proxy-agent");
+
             reqOptions.httpsAgent = new SocksProxyAgent(options.proxyUrl);
         }
     }
