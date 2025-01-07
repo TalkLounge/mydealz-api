@@ -39,12 +39,18 @@ async function getNewDeals(page, options) {
         }
     }
 
-    let data = await axios(reqOptions); // Make Request
+    let data;
+    try {
+        data = await axios(reqOptions); // Make Request
+    } catch (e) {
+        data = e;
+    }
 
-    data = data.data?.data?.content;
-    if (!data) {
+    if (!data.data?.data?.content || data?.status != 200) {
+        console.error(data);
         throw new Error("Could not get page");
     }
+    data = data.data?.data?.content;
 
     const $ = cheerio.load(data); // Parse DOM
     let list = [];
