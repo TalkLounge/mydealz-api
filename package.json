@@ -9,9 +9,10 @@
   "bugs": "https://github.com/TalkLounge/mydealz-api/issues",
   "license": "MIT",
   "dependencies": {
-    "socks-proxy-agent": "^8.0.4",
     "axios": "^1.7.7",
-    "cheerio": "^1.0.0"
+    "cheerio": "^1.0.0",
+    "html-to-text": "^9.0.5",
+    "socks-proxy-agent": "^8.0.4"
   },
   "keywords": [
     "mydealz",
