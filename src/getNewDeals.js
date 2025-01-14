@@ -1,10 +1,13 @@
-const SocksProxyAgent = require("socks-proxy-agent");
+const { SocksProxyAgent } = require("socks-proxy-agent");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
 async function getNewDeals(page, options) {
-    if (typeof (page) == "object" || typeof (page) == "undefined") {
+    if (typeof (page) == "object" || !page) {
         options = page;
+        page = 1;
+    }
+    if (page < 1) {
         page = 1;
     }
 

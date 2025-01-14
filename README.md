@@ -130,7 +130,7 @@ The function getNewDeals(page, options) takes the following parameters
 page?: number // Default: 1
 
 options?: {
-    proxyUrl?: string, // Supports HTTP(s) and Socks Proxies, Datacenter IPs are blocked on MyDealz, e.g. "https://user:password@proxy.com:443"
+    proxyUrl?: string, // Supports HTTP(s) and Socks Proxies (Datacenter IPs are blocked on MyDealz) e.g. "https://user:password@proxy.com:443"
     raw?: boolean // Return Raw(Unmapped) JSON instead
 }
 ```
@@ -138,9 +138,9 @@ options?: {
 ### Get Deal
 
 ```js
-const deals = await mydealzApi.getDeal("https://www.mydealz.de/deals/samsung-gq85qn94datxzg-ai-neo-qled-tv-85-zoll-214-cm-galaxy-z-flip-6-1000-cback-zusa-bei-soundbarkauf-eff-1299-expert-bautzen-2471207");
+const deal = await mydealzApi.getDeal("https://www.mydealz.de/deals/samsung-gq85qn94datxzg-ai-neo-qled-tv-85-zoll-214-cm-galaxy-z-flip-6-1000-cback-zusa-bei-soundbarkauf-eff-1299-expert-bautzen-2471207");
 
-console.log(deals);
+console.log(deal);
 
 /*
 {
@@ -270,7 +270,7 @@ The function getDeal(url, options) takes the following parameters
 url: string
 
 options?: {
-    proxyUrl?: string, // Supports HTTP(s) and Socks Proxies, Datacenter IPs are blocked on MyDealz, e.g. "https://user:password@proxy.com:443"
+    proxyUrl?: string, // Supports HTTP(s) and Socks Proxies (Datacenter IPs are blocked on MyDealz) e.g. "https://user:password@proxy.com:443"
     raw?: boolean // Return Raw(Unmapped) JSON instead
 }
 ```

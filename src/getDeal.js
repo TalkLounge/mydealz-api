@@ -1,4 +1,4 @@
-const SocksProxyAgent = require("socks-proxy-agent");
+const { SocksProxyAgent } = require("socks-proxy-agent");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { convert } = require("html-to-text");
