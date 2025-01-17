@@ -50,8 +50,10 @@ async function getNewDeals(page, options) {
     }
 
     if (!data.data?.data?.content || data?.status != 200) {
-        console.error(data);
-        throw new Error("Could not get page");
+        const error = new Error("Could not get page");
+        error.name = "MyDealzError";
+        error.context = { reqOptions };
+        error.originalError = data;
     }
     data = data.data?.data?.content;
 
@@ -82,6 +84,7 @@ async function getNewDeals(page, options) {
 
                 status: json.status,
                 publishedAt: json.publishedAt,
+                rePublishedAt: json.bumpedAt,
 
                 temperature: json.temperature,
                 temperatureLevel: json.temperatureLevel,

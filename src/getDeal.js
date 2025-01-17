@@ -43,8 +43,15 @@ async function getDeal(url, options) {
     }
 
     if (!data?.data || data?.status != 200) {
-        console.error(data);
-        throw new Error("Could not get page");
+        let error;
+        if (data?.status == 410) {
+            error = new Error("Page got deleted");
+        } else {
+            error = new Error("Could not get page");
+        }
+        error.name = "MyDealzError";
+        error.context = { reqOptions };
+        error.originalError = data;
     }
 
     const $ = cheerio.load(data.data); // Parse DOM
@@ -52,21 +59,24 @@ async function getDeal(url, options) {
     const match = script.match(/window\.__INITIAL_STATE__\s*=\s*({.*?});/s);
 
     if (!match || !match[1]) {
-        console.error(script);
-        throw new Error("Could not parse page");
+        const error = new Error("Could not parse page");
+        error.name = "MyDealzError";
+        error.context = { script, match };
     }
 
     let json;
     try {
         json = JSON.parse(match[1]);
     } catch (e) {
-        console.error(match[1]);
-        throw new Error("Could not parse page");
+        const error = new Error("Could not parse page");
+        error.name = "MyDealzError";
+        error.context = { json, match: match[1] };
     }
 
     if (!json.threadDetail) {
-        console.error(json);
-        throw new Error("Could not parse page");
+        const error = new Error("Could not parse page");
+        error.name = "MyDealzError";
+        error.context = { json };
     }
     json = json.threadDetail;
 

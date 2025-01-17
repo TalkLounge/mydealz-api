@@ -17,7 +17,9 @@ Inofficial [MyDealz.de](https://www.mydealz.de) API Module for Node.js
 
 ## Installation
 
-`npm install github:TalkLounge/mydealz-api`
+```
+npm install github:TalkLounge/mydealz-api`
+```
 
 ## API
 
