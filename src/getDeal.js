@@ -49,9 +49,10 @@ async function getDeal(url, options) {
         } else {
             error = new Error("Could not get page");
         }
-        error.name = "MyDealzError";
+        error.name = "MyDealzAPIError";
         error.context = { reqOptions };
         error.originalError = data;
+        throw error;
     }
 
     const $ = cheerio.load(data.data); // Parse DOM
@@ -60,8 +61,9 @@ async function getDeal(url, options) {
 
     if (!match || !match[1]) {
         const error = new Error("Could not parse page");
-        error.name = "MyDealzError";
+        error.name = "MyDealzAPIError";
         error.context = { script, match };
+        throw error;
     }
 
     let json;
@@ -69,14 +71,16 @@ async function getDeal(url, options) {
         json = JSON.parse(match[1]);
     } catch (e) {
         const error = new Error("Could not parse page");
-        error.name = "MyDealzError";
+        error.name = "MyDealzAPIError";
         error.context = { json, match: match[1] };
+        throw error;
     }
 
     if (!json.threadDetail) {
         const error = new Error("Could not parse page");
-        error.name = "MyDealzError";
+        error.name = "MyDealzAPIError";
         error.context = { json };
+        throw error;
     }
     json = json.threadDetail;
 

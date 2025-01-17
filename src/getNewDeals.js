@@ -51,9 +51,10 @@ async function getNewDeals(page, options) {
 
     if (!data.data?.data?.content || data?.status != 200) {
         const error = new Error("Could not get page");
-        error.name = "MyDealzError";
+        error.name = "MyDealzAPIError";
         error.context = { reqOptions };
         error.originalError = data;
+        throw error;
     }
     data = data.data?.data?.content;
 
